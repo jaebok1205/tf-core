@@ -1,8 +1,9 @@
 resource "aws_iam_role" "this" {
   name = "${local.project}-iamrole-${local.iamrole.name}"
 
-  assume_role_policy = local.iamrole.assume_role_policy
-
+  assume_role_policy = local.iamrole.assume_role_policy.json
+  #assume_role_policy = data.aws_iam_policy_document.ec2_assume_role_policy
+  
   tags = {
     Name = "${local.project}-iamrole-${local.iamrole.name}"
   }
@@ -23,8 +24,13 @@ resource "aws_iam_instance_profile" "this" {
   }
 }
 
+resource "aws_vpc" "this" {
+  //vpc_id = local.vpc_id
+}
+
 resource "aws_security_group" "this" {
   name = "${local.project}-sg-${local.instance.name}"
+  vpc_id = local.vpc_id
 
   ingress {
     from_port = local.instance.allow_access.port

@@ -19,7 +19,7 @@ locals {
 
   }
 
-  instance1 = {
+  instance = {
     name = "web01 server"
     ami = "ami-0c003e98ceffee43e"
     instance_type = "t3.micro"
@@ -31,6 +31,7 @@ locals {
     }
   }
 
+/*
   instance2 = {
     name = "web02 server"
     ami = "ami-0c003e98ceffee43e"
@@ -42,7 +43,7 @@ locals {
       cidr_blocks = ["0.0.0.0/0"]
     }
   }
-
+*/
   sg = {
 
   }

@@ -59,25 +59,9 @@ resource "aws_instance" "this" {
   }
 
 }
-/*
-resource "aws_instance" "web2" {
-  ami                         = local.instance.ami
-  instance_type               = local.instance.instance_type
-  associate_public_ip_address = local.instance.associate_public_ip_address
-
-  vpc_security_group_ids      = [aws_security_group.this.id]
-  iam_instance_profile        = aws_iam_instance_profile.this.name
-  depends_on                  = [ aws_iam_role_policy_attachment.this]
-
-  tags = {
-    Name                      = "${local.project}-instance-${local.instance.name}"
-  }
-}
-*/
-
-
 
 /*
+vpc 생성
 resource "aws_vpc" "main" {
   cidr_block = "10.0.0.0/16"
   enable_dns_hostnames = true # DNS 호스트네임 사용 설정 (추천)
