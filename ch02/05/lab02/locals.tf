@@ -1,14 +1,15 @@
 locals {
-  project = "tf-core-lab01"
+  project = "tf-core-gallery"
 
-  vpc_id = ""
+  vpc_id = data.aws_vpc.default.id
 
   instance = {
-    name                        = "web01 server"
-    ami                         = "ami-0c003e98ceffee43e"
+    name = "web"
+
+    ami                         = data.aws_ami.amazon_linux.id
     instance_type               = var.instance_type
     associate_public_ip_address = true
-    subnet_id = data.aws_subnets.default.ids[0]
+    subnet_id                   = data.aws_subnets.default.ids[0]
 
     allow_access = {
       port        = var.service_port
@@ -17,15 +18,9 @@ locals {
   }
 
   iamrole = {
-    name = "instance"
+    name = "instance-web"
 
-    assume_role_policy = data.aws_iam_policy_document.ec2_assume_role_policy
-    policy_arn = data.aws_iam_policy.aws_ssm_core_policy.arn
-
+    assume_role_policy = data.aws_iam_policy_document.ec2_assume_role_policy.json
+    policy_arn         = data.aws_iam_policy.aws_ssm_core_policy.arn
   }
-
-  sg = {
-
-  }
-
 }

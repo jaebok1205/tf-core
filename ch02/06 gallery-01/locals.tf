@@ -1,10 +1,10 @@
 locals {
-  project = "tf-core-lab01"
+  project = "tf-core-gallery"
 
-  vpc_id = ""
+  vpc_id = data.aws_vpc.default.id
 
   instance = {
-    name                        = "web01 server"
+    name                        = "web_server"
     ami                         = "ami-0c003e98ceffee43e"
     instance_type               = var.instance_type
     associate_public_ip_address = true
@@ -17,7 +17,7 @@ locals {
   }
 
   iamrole = {
-    name = "instance"
+    name = "instance-web"
 
     assume_role_policy = data.aws_iam_policy_document.ec2_assume_role_policy
     policy_arn = data.aws_iam_policy.aws_ssm_core_policy.arn

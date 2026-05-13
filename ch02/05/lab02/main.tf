@@ -24,10 +24,6 @@ resource "aws_iam_instance_profile" "this" {
   }
 }
 
-resource "aws_vpc" "this" {
-  //vpc_id = local.vpc_id
-}
-
 resource "aws_security_group" "this" {
   name = "${local.project}-sg-${local.instance.name}"
   vpc_id = local.vpc_id

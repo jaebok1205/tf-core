@@ -10,7 +10,7 @@ variable "service_port" {
 
 variable "cidr_blocks" {
   type        = list(string)
-  default     = ["0.0.0.0/0", "10.0.0.0/16"]
+  default     = ["0.0.0.0/0"]
 }
 
 variable "instance_type" {
