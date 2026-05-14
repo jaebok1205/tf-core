@@ -1,0 +1,22 @@
+locals {
+  org       = "tf-core"
+  project   = "lab02"
+
+  namespace = "${local.org}-${local.project}"
+
+  s3bucket = {
+    name    = "tfstate"
+
+    bucket  = "${local.org}-tfstate-jaebok1205"
+    versioning_configuration = {
+      status = "Enabled"
+    }
+
+    public_access_block = {
+      block_public_acls       = true
+      block_public_policy     = true
+      ignore_public_acls      = true
+      restrict_public_buckets = true
+    }
+  }
+}

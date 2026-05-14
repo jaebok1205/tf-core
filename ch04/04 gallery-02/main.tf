@@ -26,8 +26,8 @@ resource "aws_security_group" "this" {
   vpc_id = local.vpc_id
 
   ingress {
-    from_port   = 22
-    to_port     = 22
+    from_port   = local.instance.allow_access.port
+    to_port     = local.instance.allow_access.port
     protocol    = "tcp"
     cidr_blocks = local.instance.allow_access.cidr_blocks
   }
@@ -43,7 +43,7 @@ resource "aws_security_group" "this" {
   }
 }
 
-resource "aws_instance" "web" {
+resource "aws_instance" "this" {
   ami                         = local.instance.ami
   instance_type               = local.instance.instance_type
   subnet_id                   = local.instance.subnet_id
@@ -62,6 +62,8 @@ resource "aws_instance" "web" {
     Name = "${local.namespace}-instance-${local.instance.name}"
   }
 }
+
+
 
 # resource "aws_key_pair" "deployer" {
 #   key_name   = "docker_key"
