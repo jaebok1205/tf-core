@@ -1,6 +1,6 @@
 locals {
   org       = "tf-core"
-  project   = "lab02"
+  project   = "lab01"
   namespace = "${local.org}-${local.project}"
 
   # vpc_id = data.aws_vpc.default.id
