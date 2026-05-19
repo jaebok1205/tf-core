@@ -14,6 +14,18 @@ variable "asg_target_group_arns" {
   type = list(string)
 }
 
+variable "asg_max_size" {
+  type = number
+}
+
+variable "asg_min_size" {
+  type = number
+}
+
+variable "asg_desired_capacity" {
+  type = number
+}
+
 variable "asg_deploy_version" {
   type = string
 }
@@ -30,6 +42,6 @@ variable "lt_service_port" {
   type = number
 }
 
-# variable "asg_max_size" {
-#   type = number
-# }
+variable "lt_instance_type" {
+  type = string
+}

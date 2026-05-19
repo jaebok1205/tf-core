@@ -6,9 +6,9 @@ locals {
   asg = {
     name = "web"
 
-    max_size = 4#var.asg_max_size
-    min_size = 1
-    desired_capacity = 1
+    max_size = var.asg_max_size
+    min_size = var.asg_min_size
+    desired_capacity = var.asg_desired_capacity
 
     vpc_zone_identifier = var.asg_vpc_zone_identifier
     target_group_arns = var.asg_target_group_arns
@@ -23,7 +23,7 @@ locals {
     name = "web"
 
     image_id = data.aws_ami.amazon_linux.id
-    instance_type = "t3.small"
+    instance_type = var.lt_instance_type
 
     iam_instance_profile = {
       name = var.lt_iam_instance_profile_name
