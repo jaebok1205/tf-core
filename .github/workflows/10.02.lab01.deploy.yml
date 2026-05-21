@@ -41,7 +41,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
       
       - name: Terraform Init
-        run: terraform init
+        run: terraform init -input=false
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
