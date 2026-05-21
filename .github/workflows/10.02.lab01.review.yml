@@ -4,7 +4,7 @@ on:
   pull_request:   #trigger: PR 생성시
     branches: [main]
     types: [opened, synchronize]
-    paths: ["ch10/02/lab01/*.tf"]
+    paths: ["ch10/02/lab01/infra/*.tf"]
 
 permissions:
   contents: read
@@ -14,7 +14,7 @@ permissions:
 env:
   TF_VERSION: "1.14.7"
   AWS_REGION: "ap-northeast-2"
-  WORKING_DIR: "ch10/02/lab01"
+  WORKING_DIR: "ch10/02/lab01/infra"
 
 jobs:
   my_plan:           #job 정의
