@@ -1,12 +1,22 @@
-name: 10.01.lab01 deploy
+name: 10.02.lab01 deploy
 
 on:
   push:             #trigger: push 시
     branches: [main]
     paths: ["ch10/02/lab01/*.tf"]
 
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+
+concurrency:
+  group: tf-core-10.02.loab01-deploy
+  cancel-in-progress: false
+
 env:
   TF_VERSION: "1.14.7"
+  AWS_REGION: "ap-northeast-2"
   WORKING_DIR: "ch10/02/lab01"
 
 jobs:
@@ -24,6 +34,12 @@ jobs:
         with:
           terraform_version: ${{ env.TF_VERSION }}
 
+      - name: Configure AWS Credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ secrets.AWS_IAMROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      
       - name: Terraform Init
         run: terraform init -backend=false
 
