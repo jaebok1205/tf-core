@@ -20,4 +20,4 @@ git checkout main
 git pull origin main
 
 git push origin --delete feature/example
-git branch -d feature/example
+git branch -d feature/example# aws-repo

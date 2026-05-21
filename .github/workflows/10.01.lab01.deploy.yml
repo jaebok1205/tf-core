@@ -10,7 +10,7 @@ env:
   WORKING_DIR: "ch10/01/lab01"
 
 jobs:
-  apply:
+  my_apply:           #job 정의
     runs-on: ubuntu-latest
     defaults:
       run:
