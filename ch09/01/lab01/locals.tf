@@ -1,12 +1,12 @@
 locals {
   org       = "tf-core"
   project   = "lab01"
-       namespace = "${local.org}-${local.project}"
+  namespace = "${local.org}-${local.project}"
 
   vpc = {
-    name = "main02"
+    name = "main"
 
-    cidr_block = "10.0.0.0/16"
+    cidr_block           = "10.0.0.0/16"
     enable_dns_support   = true
     enable_dns_hostnames = true
   }
